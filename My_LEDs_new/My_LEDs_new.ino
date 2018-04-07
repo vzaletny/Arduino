@@ -2,7 +2,7 @@
 
 // How many leds in your strip?
 #define NUM_LEDS 30
-#define DELAY 70
+#define DELAY 50
 
 // For led chips like Neopixels, which have a data line, ground, and power, you just
 // need to define DATA_PIN.  For led chipsets that are SPI based (four wires - data, clock,
@@ -74,14 +74,6 @@ void garmoshka(int wait)
 {  
   for (byte clr = 0; clr < num_clr; clr++) {
     for (byte i = 0; i < NUM_LEDS; i++) { 
-      /*
-      leds[i].r = 142; //96
-      leds[i].g = 32; //64
-      leds[i].b = 0;
-      leds[NUM_LEDS - 1 - i].r = 142; //96
-      leds[NUM_LEDS - 1 - i].g = 32; //64
-      leds[NUM_LEDS - 1 - i].b = 0;
-      */
       leds[i] = leds[NUM_LEDS - 1 - i] = colors[clr];
       FastLED.show();
       delay(wait);
@@ -166,8 +158,8 @@ void loop()
       //CRGB clr = colors[randNumber];
       //one_by_one(colors[randNumber], colors[prevRndNum], 30, LEFT, false, DELAY);
       //one_by_one(colors[randNumber], colors[prevRndNum], 30, LEFT, false, DELAY);
-      //one_by_one(colors[randNumber], colors[k%8], randNumber+1, randNumber%2+1, false, DELAY);
-      //one_by_one(colors[randNumber], colors[k%8], randNumber+1, prevRndNum%2+1, false, DELAY);
+      one_by_one(colors[randNumber], colors[k%8], randNumber+1, randNumber%2+1, false, DELAY);
+      one_by_one(colors[randNumber], colors[k%8], randNumber+1, prevRndNum%2+1, false, DELAY);
       //stack(colors[randNumber], colors[k], DELAY);
       prevRndNum = randNumber;
     //}
